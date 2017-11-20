@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaxiViewController">
+            <connections>
+                <outlet property="UserInfo" destination="0Zm-zV-bkw" id="IGd-IL-beR"/>
+                <outlet property="mapView" destination="nYs-pf-2Tv" id="nuQ-1H-H9f"/>
+                <outlet property="toolBar" destination="4Kr-36-cAM" id="t9N-pz-u2c"/>
+                <outlet property="toolBar_Bottom" destination="jK9-23-GZd" id="SZx-lw-OwY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Kr-36-cAM">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="v9r-nY-InH"/>
+                        <barButtonItem style="plain" id="VEz-vr-Gef">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bRg-rM-A8w">
+                                <rect key="frame" x="64" y="7" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="return_Back:" destination="-1" eventType="touchUpInside" id="bn4-ed-mJz"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cFF-Zg-Qml"/>
+                        <barButtonItem style="plain" id="A1g-Gq-R7l">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Zm-zV-bkw">
+                                <rect key="frame" x="216" y="7" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="情報登録"/>
+                                <connections>
+                                    <action selector="ClickUserInfo:" destination="-1" eventType="touchUpInside" id="QpE-aw-CUa"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Rlc-M6-cPz"/>
+                    </items>
+                </toolbar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jK9-23-GZd">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HoO-eq-hfd"/>
+                        <barButtonItem style="plain" id="NCj-TQ-Mqt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v3l-yR-WBK">
+                                <rect key="frame" x="135" y="7" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="タクシーを呼ぶ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="taxicall:" destination="-1" eventType="touchUpInside" id="6F3-ch-yGX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="h5D-as-k9e"/>
+                    </items>
+                </toolbar>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nYs-pf-2Tv">
+                    <rect key="frame" x="10" y="74" width="355" height="539"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nYs-pf-2Tv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="0em-Ow-CeU"/>
+                <constraint firstItem="jK9-23-GZd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FdO-9Y-2Ww"/>
+                <constraint firstItem="nYs-pf-2Tv" firstAttribute="top" secondItem="4Kr-36-cAM" secondAttribute="bottom" constant="10" id="l4W-lw-xWy"/>
+                <constraint firstAttribute="trailing" secondItem="jK9-23-GZd" secondAttribute="trailing" id="oDa-29-HxL"/>
+                <constraint firstItem="jK9-23-GZd" firstAttribute="top" secondItem="nYs-pf-2Tv" secondAttribute="bottom" constant="10" id="oM1-US-MYJ"/>
+                <constraint firstAttribute="bottom" secondItem="jK9-23-GZd" secondAttribute="bottom" id="qUI-6j-2JI"/>
+                <constraint firstItem="4Kr-36-cAM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="r8v-7e-2EX"/>
+                <constraint firstItem="4Kr-36-cAM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u1A-5L-RM2"/>
+                <constraint firstAttribute="trailing" secondItem="4Kr-36-cAM" secondAttribute="trailing" id="xaP-ZC-bE1"/>
+                <constraint firstAttribute="trailing" secondItem="nYs-pf-2Tv" secondAttribute="trailing" constant="10" id="zIl-Dx-uog"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopMenuViewController">
+            <connections>
+                <outlet property="btn_bimoji" destination="gGl-kk-bQp" id="q0w-jB-pCs"/>
+                <outlet property="btn_customer" destination="kaX-zA-pjI" id="myF-G1-r7r"/>
+                <outlet property="btn_howto" destination="ian-37-Y0e" id="nHI-Il-prQ"/>
+                <outlet property="btn_kojinitiran" destination="exR-6j-SLP" id="ZGG-P8-4ia"/>
+                <outlet property="btn_loupe" destination="RUY-T5-4z8" id="rMT-h2-VgI"/>
+                <outlet property="btn_notice" destination="opV-eQ-fJN" id="pF4-Kh-xD0"/>
+                <outlet property="btn_point" destination="a49-V3-mXh" id="y3S-aE-IuL"/>
+                <outlet property="btn_taxi" destination="lbz-rM-rss" id="djI-im-oOM"/>
+                <outlet property="btn_webendding" destination="1Tv-jj-5kw" id="gwz-Kd-ZFq"/>
+                <outlet property="funeral_img" destination="DpU-Bc-caR" id="aeX-2F-fkj"/>
+                <outlet property="top_menu" destination="570-M4-o7b" id="hFI-8z-vZw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_menu" destination="etq-uQ-obP" id="0nw-X1-KXT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etq-uQ-obP">
+                    <rect key="frame" x="0.0" y="20" width="320" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uj-R5-KJl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="570-M4-o7b">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                            <state key="normal" image="funeral_top"/>
+                            <connections>
+                                <action selector="move_customer_info:" destination="-1" eventType="touchUpInside" id="jeF-Ky-WAM"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="funeral_top" translatesAutoresizingMaskIntoConstraints="NO" id="DpU-Bc-caR">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="5uj-R5-KJl" secondAttribute="bottom" id="9vc-Kq-8KS"/>
+                        <constraint firstItem="570-M4-o7b" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="top" id="Bpa-pT-1QR"/>
+                        <constraint firstItem="DpU-Bc-caR" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="top" id="Gyx-TK-9CV"/>
+                        <constraint firstAttribute="bottom" secondItem="570-M4-o7b" secondAttribute="bottom" id="Jl4-3x-coK"/>
+                        <constraint firstAttribute="trailing" secondItem="570-M4-o7b" secondAttribute="trailing" id="KP8-IJ-Gtg"/>
+                        <constraint firstItem="570-M4-o7b" firstAttribute="leading" secondItem="etq-uQ-obP" secondAttribute="leading" id="MDX-gI-mHf"/>
+                        <constraint firstItem="DpU-Bc-caR" firstAttribute="leading" secondItem="etq-uQ-obP" secondAttribute="leading" id="VTm-D9-IMu"/>
+                        <constraint firstAttribute="bottom" secondItem="DpU-Bc-caR" secondAttribute="bottom" id="Wt9-tg-PY4"/>
+                        <constraint firstAttribute="trailing" secondItem="DpU-Bc-caR" secondAttribute="trailing" id="fRl-iN-YRb"/>
+                        <constraint firstItem="5uj-R5-KJl" firstAttribute="leading" secondItem="etq-uQ-obP" secondAttribute="leading" id="kpr-h9-cAR"/>
+                        <constraint firstItem="5uj-R5-KJl" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="top" id="t1E-Fi-Go7"/>
+                        <constraint firstAttribute="trailing" secondItem="5uj-R5-KJl" secondAttribute="trailing" id="tOV-hd-mhe"/>
+                        <constraint firstAttribute="height" constant="80" id="wuf-b7-O1O"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="g5R-HX-V3U">
+                    <rect key="frame" x="0.0" y="100" width="320" height="332"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opV-eQ-fJN">
+                    <rect key="frame" x="110.5" y="135" width="99" height="90.5"/>
+                    <state key="normal" image="notice_nomal-1" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" image="notice_nomal-1" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_notice:" destination="-1" eventType="touchUpInside" id="AWK-Je-gD2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="257" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exR-6j-SLP">
+                    <rect key="frame" x="211.5" y="135" width="98.5" height="90.5"/>
+                    <state key="normal" image="taisetunakojin_nomal-1" backgroundImage="btn_background">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_kojinitiran:" destination="-1" eventType="touchUpInside" id="4bd-Aw-iLX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1Tv-jj-5kw">
+                    <rect key="frame" x="10" y="227.5" width="98.5" height="90"/>
+                    <state key="normal" image="btn_four" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_kumotu:" destination="-1" eventType="touchUpInside" id="Mv0-Pz-tv4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-kk-bQp">
+                    <rect key="frame" x="110.5" y="227.5" width="99" height="90"/>
+                    <state key="normal" image="btn_five_edit" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_bimoji:" destination="-1" eventType="touchUpInside" id="MEp-SE-2mL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbz-rM-rss">
+                    <rect key="frame" x="10" y="135" width="98.5" height="90.5"/>
+                    <state key="normal" image="aisaika_nomal" backgroundImage="btn_background">
+                        <color key="titleColor" red="1" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" image="aisaika_nomal" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_aisaikaclub:" destination="-1" eventType="touchUpInside" id="7yp-46-sln"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="256" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RUY-T5-4z8">
+                    <rect key="frame" x="211.5" y="227.5" width="98.5" height="90"/>
+                    <state key="normal" image="tombstone_nomal" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_loupe:" destination="-1" eventType="touchUpInside" id="OJx-2Q-u1X"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaX-zA-pjI">
+                    <rect key="frame" x="211.5" y="319.5" width="98.5" height="90.5"/>
+                    <state key="normal" image="btn_nine" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_customer:" destination="-1" eventType="touchUpInside" id="L4K-CT-Aj5"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="257" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ian-37-Y0e">
+                    <rect key="frame" x="110.5" y="319.5" width="99" height="90.5"/>
+                    <state key="normal" image="goodmorningsend_nomal" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_taxi:" destination="-1" eventType="touchUpInside" id="XKz-dq-izF"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-V3-mXh">
+                    <rect key="frame" x="10" y="319.5" width="98.5" height="90.5"/>
+                    <state key="normal" image="goodmorningboard_nomal" backgroundImage="btn_background">
+                        <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_background_push"/>
+                    <connections>
+                        <action selector="move_niceface:" destination="-1" eventType="touchUpInside" id="NIZ-8q-fxX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="g5R-HX-V3U" secondAttribute="trailing" id="0WH-Xy-hsz"/>
+                <constraint firstItem="RUY-T5-4z8" firstAttribute="height" secondItem="1Tv-jj-5kw" secondAttribute="height" id="0il-sY-PTj"/>
+                <constraint firstItem="1Tv-jj-5kw" firstAttribute="top" secondItem="lbz-rM-rss" secondAttribute="bottom" constant="2" id="2Sa-23-O2W"/>
+                <constraint firstItem="exR-6j-SLP" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="bottom" constant="35" id="40P-UB-L9a"/>
+                <constraint firstAttribute="trailing" secondItem="exR-6j-SLP" secondAttribute="trailing" constant="10" id="5Mh-B9-bVQ"/>
+                <constraint firstItem="ian-37-Y0e" firstAttribute="leading" secondItem="a49-V3-mXh" secondAttribute="trailing" constant="2" id="5pR-4K-Wp9"/>
+                <constraint firstItem="opV-eQ-fJN" firstAttribute="height" secondItem="lbz-rM-rss" secondAttribute="height" id="719-sY-mf2"/>
+                <constraint firstAttribute="bottom" secondItem="g5R-HX-V3U" secondAttribute="bottom" constant="48" id="CTR-TP-yb9"/>
+                <constraint firstItem="kaX-zA-pjI" firstAttribute="width" secondItem="a49-V3-mXh" secondAttribute="width" id="ESR-bY-3FM"/>
+                <constraint firstItem="opV-eQ-fJN" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="bottom" constant="35" id="IJJ-Cd-40R"/>
+                <constraint firstItem="a49-V3-mXh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="IuN-yp-TQi"/>
+                <constraint firstItem="1Tv-jj-5kw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="IzF-Wq-sQW"/>
+                <constraint firstItem="opV-eQ-fJN" firstAttribute="leading" secondItem="lbz-rM-rss" secondAttribute="trailing" constant="2" id="JRN-5w-B2g"/>
+                <constraint firstAttribute="bottom" secondItem="a49-V3-mXh" secondAttribute="bottom" constant="70" id="K2l-7g-xzr"/>
+                <constraint firstItem="gGl-kk-bQp" firstAttribute="height" secondItem="1Tv-jj-5kw" secondAttribute="height" id="NxZ-Fo-d59"/>
+                <constraint firstItem="gGl-kk-bQp" firstAttribute="leading" secondItem="1Tv-jj-5kw" secondAttribute="trailing" constant="2" id="Oc1-W0-1QU"/>
+                <constraint firstItem="ian-37-Y0e" firstAttribute="height" secondItem="a49-V3-mXh" secondAttribute="height" id="Odb-Bs-9rx"/>
+                <constraint firstItem="gGl-kk-bQp" firstAttribute="width" secondItem="1Tv-jj-5kw" secondAttribute="width" id="Pzi-MZ-SoB"/>
+                <constraint firstItem="RUY-T5-4z8" firstAttribute="width" secondItem="1Tv-jj-5kw" secondAttribute="width" id="Qx1-2e-Apk"/>
+                <constraint firstItem="RUY-T5-4z8" firstAttribute="top" secondItem="exR-6j-SLP" secondAttribute="bottom" constant="2" id="SK6-iC-AT2"/>
+                <constraint firstItem="kaX-zA-pjI" firstAttribute="height" secondItem="a49-V3-mXh" secondAttribute="height" id="UKB-tg-6SR"/>
+                <constraint firstItem="ian-37-Y0e" firstAttribute="top" secondItem="gGl-kk-bQp" secondAttribute="bottom" constant="2" id="UPf-GZ-s6A"/>
+                <constraint firstItem="etq-uQ-obP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V2S-JP-BQg"/>
+                <constraint firstItem="lbz-rM-rss" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="bottom" constant="35" id="ViM-98-j7A"/>
+                <constraint firstItem="opV-eQ-fJN" firstAttribute="width" secondItem="lbz-rM-rss" secondAttribute="width" id="WOx-xr-JYh"/>
+                <constraint firstAttribute="trailing" secondItem="etq-uQ-obP" secondAttribute="trailing" id="WwX-S7-3Jy"/>
+                <constraint firstItem="1Tv-jj-5kw" firstAttribute="height" secondItem="lbz-rM-rss" secondAttribute="height" id="X2C-ff-pFp"/>
+                <constraint firstItem="RUY-T5-4z8" firstAttribute="leading" secondItem="gGl-kk-bQp" secondAttribute="trailing" constant="2" id="XrW-cB-sJv"/>
+                <constraint firstItem="etq-uQ-obP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZPj-WZ-44J"/>
+                <constraint firstItem="a49-V3-mXh" firstAttribute="top" secondItem="1Tv-jj-5kw" secondAttribute="bottom" constant="2" id="bSv-aQ-I0B"/>
+                <constraint firstItem="gGl-kk-bQp" firstAttribute="top" secondItem="lbz-rM-rss" secondAttribute="bottom" constant="2" id="dJD-tM-Dlb"/>
+                <constraint firstItem="g5R-HX-V3U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dO3-fI-36n"/>
+                <constraint firstItem="exR-6j-SLP" firstAttribute="width" secondItem="lbz-rM-rss" secondAttribute="width" id="ggs-G9-6QK"/>
+                <constraint firstItem="g5R-HX-V3U" firstAttribute="top" secondItem="etq-uQ-obP" secondAttribute="bottom" id="in1-PA-VBv"/>
+                <constraint firstItem="kaX-zA-pjI" firstAttribute="top" secondItem="gGl-kk-bQp" secondAttribute="bottom" constant="2" id="nxs-Hx-kjE"/>
+                <constraint firstItem="lbz-rM-rss" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="oXz-PD-GuV"/>
+                <constraint firstItem="exR-6j-SLP" firstAttribute="leading" secondItem="opV-eQ-fJN" secondAttribute="trailing" constant="2" id="oqV-GX-iAR"/>
+                <constraint firstItem="etq-uQ-obP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="sml-ci-qU3"/>
+                <constraint firstItem="exR-6j-SLP" firstAttribute="height" secondItem="lbz-rM-rss" secondAttribute="height" id="te1-Re-xUJ"/>
+                <constraint firstAttribute="trailing" secondItem="RUY-T5-4z8" secondAttribute="trailing" constant="10" id="vph-PB-JB0"/>
+                <constraint firstAttribute="trailing" secondItem="kaX-zA-pjI" secondAttribute="trailing" constant="10" id="xC4-0D-8Ow"/>
+                <constraint firstItem="ian-37-Y0e" firstAttribute="width" secondItem="a49-V3-mXh" secondAttribute="width" id="xl8-vg-w0B"/>
+                <constraint firstItem="kaX-zA-pjI" firstAttribute="leading" secondItem="ian-37-Y0e" secondAttribute="trailing" constant="2" id="zag-vG-hjx"/>
+                <constraint firstItem="a49-V3-mXh" firstAttribute="height" secondItem="lbz-rM-rss" secondAttribute="height" id="zkA-gE-w5m"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ZPj-WZ-44J"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-68" y="54"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="aisaika_nomal" width="356" height="356"/>
+        <image name="btn_background" width="356" height="356"/>
+        <image name="btn_background_push" width="356" height="356"/>
+        <image name="btn_five_edit" width="356" height="356"/>
+        <image name="btn_four" width="356" height="356"/>
+        <image name="btn_nine" width="356" height="356"/>
+        <image name="funeral_top" width="709" height="180"/>
+        <image name="goodmorningboard_nomal" width="356" height="356"/>
+        <image name="goodmorningsend_nomal" width="356" height="356"/>
+        <image name="notice_nomal-1" width="356" height="356"/>
+        <image name="taisetunakojin_nomal-1" width="356" height="356"/>
+        <image name="tombstone_nomal" width="356" height="356"/>
+        <image name="top_bg" width="480" height="800"/>
+    </resources>
+</document>

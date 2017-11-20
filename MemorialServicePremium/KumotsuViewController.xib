@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KumotsuViewController">
+            <connections>
+                <outlet property="toolBar" destination="O2v-w2-uvM" id="5JF-bm-ga9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2v-w2-uvM">
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="p1A-Ti-e2U"/>
+                        <barButtonItem style="plain" id="too-eI-bYu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tYI-u9-MrD">
+                                <rect key="frame" x="140" y="7" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <action selector="return_Back:" destination="-1" eventType="touchUpInside" id="WqM-Lg-IdX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hop-Nb-w8G"/>
+                    </items>
+                </toolbar>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wc-Cv-e6Y">
+                    <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" backgroundImage="kumotsu.png">
+                        <color key="titleColor" red="0.20146973560000001" green="0.57234416889999995" blue="0.34217840179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="move_Detail:" destination="-1" eventType="touchUpInside" id="npO-D1-k4a"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0Wc-Cv-e6Y" firstAttribute="top" secondItem="O2v-w2-uvM" secondAttribute="bottom" id="4Vd-Kw-Z69"/>
+                <constraint firstItem="O2v-w2-uvM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="96n-Sw-kMn"/>
+                <constraint firstAttribute="trailing" secondItem="0Wc-Cv-e6Y" secondAttribute="trailing" id="IXC-4z-Z3J"/>
+                <constraint firstAttribute="trailing" secondItem="O2v-w2-uvM" secondAttribute="trailing" id="Jeg-kH-cZc"/>
+                <constraint firstAttribute="bottom" secondItem="0Wc-Cv-e6Y" secondAttribute="bottom" id="p3P-Mi-bKe"/>
+                <constraint firstItem="0Wc-Cv-e6Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pJC-nd-MDe"/>
+                <constraint firstItem="O2v-w2-uvM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="xnO-oV-VYa"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="kumotsu.png" width="720" height="960"/>
+    </resources>
+</document>

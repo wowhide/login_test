@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeMonthDeathdayViewController">
+            <connections>
+                <outlet property="aisaikaDocumentRequestTelButton" destination="tMe-B1-95B" id="2Zt-K8-E1d"/>
+                <outlet property="aisaikaSougiAboutTelButton" destination="mQx-B7-htZ" id="fa1-e2-0yp"/>
+                <outlet property="goyomeLabel" destination="o6e-oh-Fxf" id="YWi-HK-dQX"/>
+                <outlet property="morticianLabel" destination="BMT-xS-0hw" id="t7f-K0-3oC"/>
+                <outlet property="noticeLabel" destination="Huh-3V-zLc" id="GhH-Zg-XWt"/>
+                <outlet property="noticeScroll" destination="9HM-31-t1w" id="Zrv-gl-26b"/>
+                <outlet property="noticeScrollView" destination="TZK-9z-usx" id="qXq-L7-luU"/>
+                <outlet property="ryoboDocumentRequestTelButton" destination="Kxy-qJ-s3u" id="4Yg-2V-ggw"/>
+                <outlet property="telButton" destination="JDy-ls-ByW" id="F4x-DN-7JG"/>
+                <outlet property="toolBar" destination="HtE-88-dip" id="Trb-HC-KL0"/>
+                <outlet property="urlButton" destination="aTH-c3-O0O" id="ovG-qR-OBg"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtE-88-dip">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <barButtonItem title="閉じる" width="95" id="EXw-J8-BcY">
+                            <connections>
+                                <action selector="appliOpenButtonPushed:" destination="-1" id="mFb-XX-1Qc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5j6-C3-ahv"/>
+                    </items>
+                </toolbar>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HM-31-t1w">
+                    <rect key="frame" x="0.0" y="64" width="375" height="800"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-9z-usx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11月09日(土)は、富士　三郎様の月命日です。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huh-3V-zLc">
+                                    <rect key="frame" x="20" y="20" width="335" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仏壇・仏具、お墓改装（墓じまい）のご相談がございましたら、お気軽にご相談ください。  法要に関するご相談" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6e-oh-Fxf" userLabel="Label - ご用命がございましたら、下記までご連絡下さい。  事前相談も承っております。 お気軽にお問い合わせ下さい。">
+                                    <rect key="frame" x="20" y="73" width="335" height="107.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○葬儀社" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMT-xS-0hw">
+                                    <rect key="frame" x="20" y="190.5" width="335" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お墓に関するご相談" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdZ-M5-KLo">
+                                    <rect key="frame" x="20" y="280.5" width="335" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmd-Ab-whO">
+                                    <rect key="frame" x="20" y="309.5" width="70" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-qJ-s3u">
+                                    <rect key="frame" x="105" y="303.5" width="260" height="34"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="0120-300-100"/>
+                                    <connections>
+                                        <action selector="telButtonRyoboDocumentRequestPushed:" destination="-1" eventType="touchUpInside" id="LQz-Z6-RBo"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛彩花倶楽部" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rB-Yi-kOQ">
+                                    <rect key="frame" x="20" y="370.5" width="335" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="葬儀について（24時間受付）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6q-Zl-67o">
+                                    <rect key="frame" x="20" y="399.5" width="335" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-Xj-VM3">
+                                    <rect key="frame" x="20" y="428.5" width="70" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQx-B7-htZ">
+                                    <rect key="frame" x="105" y="422.5" width="260" height="34"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="0120-678-000"/>
+                                    <connections>
+                                        <action selector="telButtonAisaikaSougiAboutPushed:" destination="-1" eventType="touchUpInside" id="3WF-TL-LKU"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="資料請求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf4-Kt-Faa">
+                                    <rect key="frame" x="20" y="457.5" width="335" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lY4-EE-IML">
+                                    <rect key="frame" x="20" y="486.5" width="70" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-dL-WBD">
+                                    <rect key="frame" x="20" y="219.5" width="70" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-ls-ByW">
+                                    <rect key="frame" x="105" y="212.5" width="260" height="34"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="0120-678-000"/>
+                                    <connections>
+                                        <action selector="telButtonPushed:" destination="-1" eventType="touchUpInside" id="hbG-uz-reZ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-B1-95B">
+                                    <rect key="frame" x="105" y="480.5" width="260" height="34"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="0120-86-0030"/>
+                                    <connections>
+                                        <action selector="telButtonAisaikaDocumentRequestPushed:" destination="-1" eventType="touchUpInside" id="7jF-63-oJ6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTH-c3-O0O">
+                                    <rect key="frame" x="10" y="529.5" width="355" height="50"/>
+                                    <color key="backgroundColor" red="1" green="0.38823529411764707" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="w5f-du-HGZ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="愛彩花ホームページへ">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="urlButtonPushed:" destination="-1" eventType="touchUpInside" id="mkc-cl-fis"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="mQx-B7-htZ" firstAttribute="top" secondItem="Z6q-Zl-67o" secondAttribute="bottom" constant="2" id="1ae-Zy-fvH"/>
+                                <constraint firstItem="aTH-c3-O0O" firstAttribute="top" secondItem="tMe-B1-95B" secondAttribute="bottom" constant="15" id="1xD-eD-utB"/>
+                                <constraint firstItem="mQx-B7-htZ" firstAttribute="leading" secondItem="rcg-Xj-VM3" secondAttribute="trailing" constant="15" id="2Y7-hm-XEG"/>
+                                <constraint firstAttribute="trailing" secondItem="zdZ-M5-KLo" secondAttribute="trailing" constant="20" id="2hw-o5-yVn"/>
+                                <constraint firstItem="Kxy-qJ-s3u" firstAttribute="top" secondItem="zdZ-M5-KLo" secondAttribute="bottom" constant="2" id="3qZ-2Z-t29"/>
+                                <constraint firstItem="lY4-EE-IML" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="6pb-FR-5al"/>
+                                <constraint firstAttribute="trailing" secondItem="5rB-Yi-kOQ" secondAttribute="trailing" constant="20" id="8X7-N1-RG4"/>
+                                <constraint firstItem="aDk-dL-WBD" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="8a9-LV-c6y"/>
+                                <constraint firstItem="5rB-Yi-kOQ" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="8m5-Cp-WeS"/>
+                                <constraint firstItem="bf4-Kt-Faa" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="9Is-Lq-GnG"/>
+                                <constraint firstAttribute="trailing" secondItem="Kxy-qJ-s3u" secondAttribute="trailing" constant="10" id="ArB-ju-bOT"/>
+                                <constraint firstAttribute="trailing" secondItem="o6e-oh-Fxf" secondAttribute="trailing" constant="20" id="CEW-D7-WKe"/>
+                                <constraint firstItem="zdZ-M5-KLo" firstAttribute="top" secondItem="aDk-dL-WBD" secondAttribute="bottom" constant="40" id="FQ2-py-pHZ"/>
+                                <constraint firstItem="o6e-oh-Fxf" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="IVW-gQ-v2C"/>
+                                <constraint firstItem="5rB-Yi-kOQ" firstAttribute="top" secondItem="Fmd-Ab-whO" secondAttribute="bottom" constant="40" id="JE4-Dl-CGS"/>
+                                <constraint firstItem="Huh-3V-zLc" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="KIq-GY-bKD"/>
+                                <constraint firstItem="Kxy-qJ-s3u" firstAttribute="leading" secondItem="Fmd-Ab-whO" secondAttribute="trailing" constant="15" id="Krc-lz-G0C"/>
+                                <constraint firstItem="tMe-B1-95B" firstAttribute="leading" secondItem="lY4-EE-IML" secondAttribute="trailing" constant="15" id="LI5-Z1-vKg"/>
+                                <constraint firstItem="rcg-Xj-VM3" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="NzC-db-fah"/>
+                                <constraint firstAttribute="trailing" secondItem="bf4-Kt-Faa" secondAttribute="trailing" constant="20" id="Oh0-Z2-yxY"/>
+                                <constraint firstAttribute="trailing" secondItem="BMT-xS-0hw" secondAttribute="trailing" constant="20" id="Ryk-8m-8Nj"/>
+                                <constraint firstItem="Z6q-Zl-67o" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="VQf-kj-tYf"/>
+                                <constraint firstAttribute="trailing" secondItem="tMe-B1-95B" secondAttribute="trailing" constant="10" id="Y5y-RP-fwn"/>
+                                <constraint firstItem="JDy-ls-ByW" firstAttribute="top" secondItem="BMT-xS-0hw" secondAttribute="bottom" constant="1" id="aTB-nN-J7Z"/>
+                                <constraint firstAttribute="trailing" secondItem="Huh-3V-zLc" secondAttribute="trailing" constant="20" id="cIg-GC-b0V"/>
+                                <constraint firstItem="BMT-xS-0hw" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="cQB-11-nUf"/>
+                                <constraint firstItem="tMe-B1-95B" firstAttribute="top" secondItem="bf4-Kt-Faa" secondAttribute="bottom" constant="2" id="fXK-3w-nEr"/>
+                                <constraint firstAttribute="height" constant="1000" id="h5k-GX-U6P"/>
+                                <constraint firstAttribute="trailing" secondItem="Z6q-Zl-67o" secondAttribute="trailing" constant="20" id="ijp-3J-O2U"/>
+                                <constraint firstItem="rcg-Xj-VM3" firstAttribute="top" secondItem="Z6q-Zl-67o" secondAttribute="bottom" constant="8" id="mGV-Jz-DHW"/>
+                                <constraint firstItem="aTH-c3-O0O" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="10" id="mdj-Wv-L0B"/>
+                                <constraint firstItem="JDy-ls-ByW" firstAttribute="leading" secondItem="aDk-dL-WBD" secondAttribute="trailing" constant="15" id="mpI-59-oQA"/>
+                                <constraint firstItem="bf4-Kt-Faa" firstAttribute="top" secondItem="rcg-Xj-VM3" secondAttribute="bottom" constant="8" id="nG3-h5-3Ke"/>
+                                <constraint firstItem="Fmd-Ab-whO" firstAttribute="top" secondItem="zdZ-M5-KLo" secondAttribute="bottom" constant="8" id="ogm-fN-0QM"/>
+                                <constraint firstItem="o6e-oh-Fxf" firstAttribute="top" secondItem="Huh-3V-zLc" secondAttribute="bottom" constant="10" id="pST-Qo-htk"/>
+                                <constraint firstItem="Z6q-Zl-67o" firstAttribute="top" secondItem="5rB-Yi-kOQ" secondAttribute="bottom" constant="8" id="qOM-p8-5XL"/>
+                                <constraint firstItem="Huh-3V-zLc" firstAttribute="top" secondItem="TZK-9z-usx" secondAttribute="top" constant="20" id="s0C-0W-Zhs"/>
+                                <constraint firstItem="lY4-EE-IML" firstAttribute="top" secondItem="bf4-Kt-Faa" secondAttribute="bottom" constant="8" id="sos-uU-Aw4"/>
+                                <constraint firstAttribute="trailing" secondItem="mQx-B7-htZ" secondAttribute="trailing" constant="10" id="uA0-Jm-9Q8"/>
+                                <constraint firstItem="Fmd-Ab-whO" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="vaN-Ja-Zqe"/>
+                                <constraint firstAttribute="trailing" secondItem="JDy-ls-ByW" secondAttribute="trailing" constant="10" id="y5s-EU-ldD"/>
+                                <constraint firstItem="BMT-xS-0hw" firstAttribute="top" secondItem="o6e-oh-Fxf" secondAttribute="bottom" constant="10" id="ySb-CL-3ve"/>
+                                <constraint firstAttribute="trailing" secondItem="aTH-c3-O0O" secondAttribute="trailing" constant="10" id="yvO-3n-PPV"/>
+                                <constraint firstItem="zdZ-M5-KLo" firstAttribute="leading" secondItem="TZK-9z-usx" secondAttribute="leading" constant="20" id="zB9-37-cK1"/>
+                                <constraint firstItem="aDk-dL-WBD" firstAttribute="top" secondItem="BMT-xS-0hw" secondAttribute="bottom" constant="8" id="zMC-Nz-ykD"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="TZK-9z-usx" secondAttribute="bottom" constant="-200" id="47h-ny-Wcw"/>
+                        <constraint firstAttribute="trailing" secondItem="TZK-9z-usx" secondAttribute="trailing" id="83E-ZT-QDj"/>
+                        <constraint firstItem="TZK-9z-usx" firstAttribute="leading" secondItem="9HM-31-t1w" secondAttribute="leading" id="Zab-An-1IY"/>
+                        <constraint firstItem="TZK-9z-usx" firstAttribute="centerX" secondItem="9HM-31-t1w" secondAttribute="centerX" id="f63-VD-mzZ"/>
+                        <constraint firstItem="TZK-9z-usx" firstAttribute="top" secondItem="9HM-31-t1w" secondAttribute="top" id="qVb-f5-5d2"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HtE-88-dip" secondAttribute="trailing" id="5Ir-5N-G0D"/>
+                <constraint firstAttribute="bottom" secondItem="9HM-31-t1w" secondAttribute="bottom" constant="-197" id="LCt-E4-XXb"/>
+                <constraint firstItem="9HM-31-t1w" firstAttribute="trailing" secondItem="HtE-88-dip" secondAttribute="trailing" id="Vqo-r5-h7B"/>
+                <constraint firstItem="9HM-31-t1w" firstAttribute="leading" secondItem="HtE-88-dip" secondAttribute="leading" id="Wrf-zE-2Ta"/>
+                <constraint firstItem="9HM-31-t1w" firstAttribute="top" secondItem="HtE-88-dip" secondAttribute="bottom" id="fT3-pe-T6f"/>
+                <constraint firstItem="HtE-88-dip" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="rrO-oU-gQB"/>
+                <constraint firstItem="HtE-88-dip" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="xPb-sG-VbJ"/>
+            </constraints>
+            <point key="canvasLocation" x="-64.5" y="148.5"/>
+        </view>
+    </objects>
+</document>
