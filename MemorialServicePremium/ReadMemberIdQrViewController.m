@@ -18,6 +18,7 @@
     UITextField *_textField;
     NSUserDefaults *defaults;
     NSString *entryMemberNumber;
+    NSString *entryMemberPassword;
 }
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
@@ -202,44 +203,35 @@
 //ログインボタン押下時
 - (IBAction)pushLoginButton:(id)sender {
         
-    //インジケーター開始
-//    [IndicatorWindow openWindow];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
     //インターネットに接続できるかチェック、接続できない場合、エラーダイアログ表示
     Reachability *curReach = [Reachability reachabilityForInternetConnection];
     NetworkStatus netStatus = [curReach currentReachabilityStatus];
     if (netStatus == NotReachable) {
-        
-        //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
         //接続できない場合
         [self.view makeToast:@"ネットワークに接続できる環境でダウンロードして下さい。" duration:TOAST_DURATION_ERROR position:@"center"];
-
-        
         return;
     }
 
+    //インジケーター開始
+    [IndicatorWindow openWindow];
     
     //入力後の会員番号を取得
-    entryMemberNumber               = self.memberNumber.text;
+    entryMemberNumber       = self.memberNumber.text;
     //入力後のパスワードを取得
-    NSString *entryMemberPassword   = self.memberPassword.text;
+    entryMemberPassword     = self.memberPassword.text;
     
     //入力チェック
     if (entryMemberNumber.length == 0 && entryMemberPassword.length == 0) {
         //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [IndicatorWindow closeWindow];
         //エラーメッセージをダイアログ表示
         [self.view makeToast:@"会員番号・パスワードが未入力です。" duration:TOAST_DURATION_ERROR position:@"center"];
         return;
     }
     if (entryMemberNumber.length == 0) {
         //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [IndicatorWindow closeWindow];
         //エラーメッセージをダイアログ表示
         [self.view makeToast:@"会員番号が未入力です。" duration:TOAST_DURATION_ERROR position:@"center"];
         return;
@@ -247,8 +239,7 @@
     
     if (entryMemberPassword.length == 0) {
         //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [IndicatorWindow closeWindow];
         //エラーメッセージをダイアログ表示
         [self.view makeToast:@"パスワードが未入力です。" duration:TOAST_DURATION_ERROR position:@"center"];
         return;
@@ -261,6 +252,17 @@
     self.readMemberIdScroll.userInteractionEnabled = NO;
     self.readMemberIdScrollView.userInteractionEnabled = NO;
     
+    // 別スレッドでログイン認証を行う
+    NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+                                        initWithTarget:self
+                                        selector:@selector(loginAuth)
+                                        object:nil];
+    NSOperationQueue *queue = [NSOperationQueue new];
+    [queue addOperation:operation];
+    
+}
+
+-(void)loginAuth{
     
     HttpAccess *httpAccess = [HttpAccess new];
     
@@ -276,21 +278,38 @@
         
         [self.view makeToast:@"成功しました。" duration:TOAST_DURATION_ERROR position:@"center"];
         
-//        defaults = [NSUserDefaults standardUserDefaults];                       // 取得
-//        [defaults setBool:YES forKey:@"KEY_DOWNLOAD"];
-//        [defaults synchronize];                                                 // 反映
+        //        defaults = [NSUserDefaults standardUserDefaults];                       // 取得
+        //        [defaults setBool:YES forKey:@"KEY_DOWNLOAD"];
+        //        [defaults synchronize];                                                 // 反映
         
         //デバイストークンを取得
         defaults = [NSUserDefaults standardUserDefaults];
         NSString *strToken = [defaults stringForKey:KEY_DEVICE_TOKEN];
         
-        //別スレッドでサーバーにデバイストークンを保存する
-        NSInvocationOperation *operation = [[NSInvocationOperation alloc]
-                                            initWithTarget:self
-                                            selector:@selector(saveDeviceToken:)
-                                            object:strToken];
-        NSOperationQueue *queue = [NSOperationQueue new];
-        [queue addOperation:operation];
+        //リクエスト先を指定する
+        NSString *deviceToken_urlAsString = SAVE_DEVICE_TOKEN_AND_DECEASED_ID;
+        NSURL *deviceToken_url = [NSURL URLWithString:deviceToken_urlAsString];
+        //POSTメソッドのHTTPリクエストを生成する
+        NSMutableURLRequest *deviceToken_urlRequest = [NSMutableURLRequest requestWithURL:deviceToken_url];
+        [deviceToken_urlRequest setHTTPMethod:@"POST"];
+        //パラメータを付与
+        NSString *deviceToken_body = [NSString stringWithFormat:@"device_token=%@&deceased_id=%@",strToken, entryMemberNumber];
+        [deviceToken_urlRequest setHTTPBody:[deviceToken_body dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        NSHTTPURLResponse *deviceToken_response;
+        NSError *deviceToken_error = nil;
+        
+        //HTTP同期通信を実行
+        NSData *deviceTokenResult = [NSURLConnection sendSynchronousRequest:deviceToken_urlRequest returningResponse:&deviceToken_response error:&deviceToken_error];
+        
+        //デバイストークンをサーバーに保存
+        if (deviceTokenResult && deviceToken_response.statusCode == 200) {
+            //成功
+            [defaults setBool:YES forKey:@"DEVICETOKEN_SAVE"];
+            [defaults synchronize];
+        } else {
+            //失敗
+        }
         
         //アプリIDを取得
         NSMutableDictionary *parameter = [@{@"member_id":entryMemberNumber} mutableCopy];
@@ -300,7 +319,7 @@
         NSString *appliId= [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
         
         NSLog(@"アプリID：%@",appliId);
-
+        
         //ユーザーデフォルト
         [defaults setObject:entryMemberNumber forKey:KEY_MEMBER_USER_ID];   // 会員番号_更新
         [defaults setObject:appliId forKey:KEY_MEMBER_APPLI_ID];           // appli_id_更新
@@ -311,54 +330,32 @@
         [defaults setBool:YES forKey:@"KEY_DOWNLOAD"];
         [defaults synchronize];
         
-        //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        //当画面も閉じ、トップメニューへ遷移
-        [self.delegate hideReadMemberIdQrView:self];
-        
+        // メインスレッドでインディケーターを閉じる
+        [self performSelectorOnMainThread:@selector(closeIndicator) withObject:nil waitUntilDone:NO];
     }else{
-        //インジケータを閉じる
-        //[IndicatorWindow closeWindow];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
- 
-        self.view.userInteractionEnabled = YES;
-        self.toolBar.userInteractionEnabled = YES;
-        self.readMemberIdScroll.userInteractionEnabled = YES;
-        self.readMemberIdScrollView.userInteractionEnabled = YES;
-        [self.view makeToast:@"会員番号、またはパスワードが正しくありません。" duration:TOAST_DURATION_ERROR position:@"center"];
+        // メインスレッドでインディケーターを閉じる
+        [self performSelectorOnMainThread:@selector(falselogin) withObject:nil waitUntilDone:NO];
     }
     
 }
 
-//サーバーにデバイストークンを保存する
-- (void)saveDeviceToken:(NSString *)strToken
-{
-    //リクエスト先を指定する
-    NSString *deviceToken_urlAsString = SAVE_DEVICE_TOKEN_AND_DECEASED_ID;
-    NSURL *deviceToken_url = [NSURL URLWithString:deviceToken_urlAsString];
-    //POSTメソッドのHTTPリクエストを生成する
-    NSMutableURLRequest *deviceToken_urlRequest = [NSMutableURLRequest requestWithURL:deviceToken_url];
-    [deviceToken_urlRequest setHTTPMethod:@"POST"];
-    //パラメータを付与
-    NSString *deviceToken_body = [NSString stringWithFormat:@"device_token=%@&deceased_id=%@",strToken, entryMemberNumber];
-    [deviceToken_urlRequest setHTTPBody:[deviceToken_body dataUsingEncoding:NSUTF8StringEncoding]];
+
+-(void)closeIndicator{
+    //インジケータを閉じる
+    [IndicatorWindow closeWindow];
+    //当画面も閉じ、トップメニューへ遷移
+    [self.delegate hideReadMemberIdQrView:self];
+}
+
+-(void)falselogin{
+    //インジケータを閉じる
+    [IndicatorWindow closeWindow];
     
-    NSHTTPURLResponse *deviceToken_response;
-    NSError *deviceToken_error = nil;
-    
-    //HTTP同期通信を実行
-    NSData *deviceTokenResult = [NSURLConnection sendSynchronousRequest:deviceToken_urlRequest returningResponse:&deviceToken_response error:&deviceToken_error];
-    
-    //デバイストークンをサーバーに保存
-    if (deviceTokenResult && deviceToken_response.statusCode == 200) {
-        //成功
-        [defaults setBool:YES forKey:@"DEVICETOKEN_SAVE"];
-        [defaults synchronize];
-    } else {
-        //失敗
-    }
+    self.view.userInteractionEnabled = YES;
+    self.toolBar.userInteractionEnabled = YES;
+    self.readMemberIdScroll.userInteractionEnabled = YES;
+    self.readMemberIdScrollView.userInteractionEnabled = YES;
+    [self.view makeToast:@"会員番号、またはパスワードが正しくありません。" duration:TOAST_DURATION_ERROR position:@"center"];
 }
 
 //戻るボタンクリック時
