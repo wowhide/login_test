@@ -392,7 +392,7 @@
         self.readMemberIdScroll.contentInset = contentInsets;
         self.readMemberIdScroll.scrollIndicatorInsets = contentInsets;
         
-        CGPoint pt = [self.readMemberIdScroll convertPoint:_textField.frame.origin toView:self.readMemberIdScroll];
+        CGPoint pt = [self.readMemberIdScroll convertPoint:_textField.frame.origin toView:self.readMemberIdScrollView];
         
         if(CGRectGetMinY(keyboardRect) < pt.y)
         {
