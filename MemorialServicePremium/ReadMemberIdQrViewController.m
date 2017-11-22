@@ -19,6 +19,8 @@
     NSUserDefaults *defaults;
     NSString *entryMemberNumber;
     NSString *entryMemberPassword;
+    NSNotificationCenter *notification;
+    
 }
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
@@ -34,6 +36,15 @@
 @end
 
 @implementation ReadMemberIdQrViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        notification = [NSNotificationCenter defaultCenter];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,9 +92,11 @@
     
     _loginButton.backgroundColor = [UIColor colorWithRed:TOOLBAR_BG_COLOR_RED green:TOOLBAR_BG_COLOR_GREEN blue:TOOLBAR_BG_COLOR_BLUE alpha:1.0];
     //キーボードタイプを指定
-//    self.memberNumber.keyboardType = UIKeyboardTypeASCIICapable;
-//    self.memberPassword.keyboardType = UIKeyboardTypeASCIICapable;
-//
+    self.memberNumber.keyboardType = UIKeyboardTypeASCIICapable;
+    self.memberPassword.keyboardType = UIKeyboardTypeASCIICapable;
+    //パスワード形式にする
+    [self.memberPassword setSecureTextEntry:YES];
+
     //キーボード閉じるボタン用ツールバーを生成
     UIToolbar *closeBar = [[UIToolbar alloc] init];
     //スタイルの設定
@@ -102,7 +115,6 @@
     self.memberNumber.inputAccessoryView = closeBar;
     self.memberPassword.inputAccessoryView = closeBar;
 
-    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
     // キーボード表示時
     [notification addObserver:self selector:@selector(keyboardWillShow:)
                          name: UIKeyboardWillShowNotification object:nil];
@@ -114,38 +126,32 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    //キーボードタイプを指定
-    self.memberNumber.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-    self.memberPassword.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+//    //キーボードタイプを指定
+//    self.memberNumber.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+//    self.memberPassword.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+//
+//    //パスワード形式にする
+//    [self.memberPassword setSecureTextEntry:YES];
+//
+//    //キーボード閉じるボタン用ツールバーを生成
+//    UIToolbar *closeBar = [[UIToolbar alloc] init];
+//    //スタイルの設定
+//    closeBar.barStyle = UIBarStyleDefault;
+//    //ツールバーを画面サイズに合わせる
+//    [closeBar sizeToFit];
+//    //「完了」ボタンを右端に配置したいためフレキシブルなスペースを作成する。
+//    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+//    //完了ボタンの生成
+//    UIBarButtonItem *_commitBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeSoftKeyboard)];
+//    //ボタンをToolbarに設定
+//    NSArray *toolBarItems = [NSArray arrayWithObjects:spacer, _commitBtn, nil];
+//    //表示・非表示の設定
+//    [closeBar setItems:toolBarItems animated:YES];
+//    //ToolbarをTextViewのinputAccessoryViewに設定
+//    self.memberNumber.inputAccessoryView = closeBar;
+//    self.memberPassword.inputAccessoryView = closeBar;
     
-    //パスワード形式にする
-    [self.memberPassword setSecureTextEntry:YES];
-    
-    //キーボード閉じるボタン用ツールバーを生成
-    UIToolbar *closeBar = [[UIToolbar alloc] init];
-    //スタイルの設定
-    closeBar.barStyle = UIBarStyleDefault;
-    //ツールバーを画面サイズに合わせる
-    [closeBar sizeToFit];
-    //「完了」ボタンを右端に配置したいためフレキシブルなスペースを作成する。
-    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    //完了ボタンの生成
-    UIBarButtonItem *_commitBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeSoftKeyboard)];
-    //ボタンをToolbarに設定
-    NSArray *toolBarItems = [NSArray arrayWithObjects:spacer, _commitBtn, nil];
-    //表示・非表示の設定
-    [closeBar setItems:toolBarItems animated:YES];
-    //ToolbarをTextViewのinputAccessoryViewに設定
-    self.memberNumber.inputAccessoryView = closeBar;
-    self.memberPassword.inputAccessoryView = closeBar;
-    
-    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
-    // キーボード表示時
-    [notification addObserver:self selector:@selector(keyboardWillShow:)
-                         name: UIKeyboardWillShowNotification object:nil];
-    // キーボード非表示時
-    [notification addObserver:self selector:@selector(keyboardWillHide:)
-                         name: UIKeyboardWillHideNotification object:nil];
+
 }
 
 
@@ -386,11 +392,11 @@
         self.readMemberIdScroll.contentInset = contentInsets;
         self.readMemberIdScroll.scrollIndicatorInsets = contentInsets;
         
-        CGPoint pt = [self.readMemberIdScroll convertPoint:_textField.frame.origin toView:self.view];
+        CGPoint pt = [self.readMemberIdScroll convertPoint:_textField.frame.origin toView:self.readMemberIdScroll];
         
         if(CGRectGetMinY(keyboardRect) < pt.y)
         {
-            CGPoint scrollPoint = CGPointMake(0.0, pt.y - CGRectGetMinY(keyboardRect) + _textField.frame.size.height+200);
+            CGPoint scrollPoint = CGPointMake(0.0, pt.y - CGRectGetMinY(keyboardRect) + _textField.frame.size.height+65);
             [self.readMemberIdScroll setContentOffset:scrollPoint animated:YES];
         }
     }
