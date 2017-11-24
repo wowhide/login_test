@@ -115,13 +115,7 @@
     self.memberNumber.inputAccessoryView = closeBar;
     self.memberPassword.inputAccessoryView = closeBar;
 
-    // キーボード表示時
-    [notification addObserver:self selector:@selector(keyboardWillShow:)
-                         name: UIKeyboardWillShowNotification object:nil];
-    // キーボード非表示時
-    [notification addObserver:self selector:@selector(keyboardWillHide:)
-                         name: UIKeyboardWillHideNotification object:nil];
-    
+
 
 }
 
@@ -150,10 +144,23 @@
 //    //ToolbarをTextViewのinputAccessoryViewに設定
 //    self.memberNumber.inputAccessoryView = closeBar;
 //    self.memberPassword.inputAccessoryView = closeBar;
+
+    // キーボード表示時
+    [notification addObserver:self selector:@selector(keyboardWillShow:)
+                         name: UIKeyboardWillShowNotification object:nil];
+    // キーボード非表示時
+    [notification addObserver:self selector:@selector(keyboardWillHide:)
+                         name: UIKeyboardWillHideNotification object:nil];
     
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // キーボード表示・非表示時のイベント削除
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
 
 //初期表示　先頭行表示処理
 -(void)viewDidLayoutSubviews{

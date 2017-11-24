@@ -283,91 +283,104 @@
         //QR読込済の場合
         if (appliId != NULL|| [appliId length] != 0) {
             
-            //サーバーから会員情報取得
-            HttpAccess *httpAccess = [HttpAccess new];
-        
-            NSMutableDictionary *parameter = [@{@"appli_id":appliId} mutableCopy];
-        
-            NSData *returnData = [httpAccess POST:GET_MEMBER_ID param:parameter];
-        
-            NSError *errorObject = nil;
-            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:returnData options:NSJSONReadingAllowFragments error:&errorObject];
-        
-            //JSONオブジェクトのパース失敗時はログを出して終了
-            if ([jsonObject isEqual:@"false"]) {
-                NSLog(@"JSONObjectパース失敗");
-                return;
-            }
-        
-            //サーバーからタイムスタンプを取得
-            srvUpdateTime = [jsonObject objectForKey:@"timestamp"];
-        
-            //アプリにデータがなければ、現在時刻を保存
-            if (appUpDateTime == NULL|| [appUpDateTime length] == 0) {
-                [defaults setObject:nowTime forKey:KEY_RYOBO_PHOTO_UPDATETIME];
-                [defaults synchronize];
-            }else{
-                //アプリ内データ
-                NSDateFormatter *appDateFormatter = [[NSDateFormatter alloc] init];
-                appDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-                NSDate *appDate = [appDateFormatter dateFromString:appUpDateTime];
-                
-                //サーバーデータ
-                NSDateFormatter *srvDateFormatter = [[NSDateFormatter alloc] init];
-                srvDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-                NSDate *srvDate = [appDateFormatter dateFromString:srvUpdateTime];
-            
-                //保存先パス取得
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString *documentsDirectory = [paths objectAtIndex:0];
-                NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"ryobo2.jpg"];
-                NSFileManager *fileManager = [NSFileManager defaultManager];
+            // 別スレッドでログイン認証を行う
+            NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+                                                initWithTarget:self
+                                                selector:@selector(getInfo)
+                                                object:nil];
+            NSOperationQueue *queue = [NSOperationQueue new];
+            [queue addOperation:operation];
+        }
+         
+    }
+    
+}
 
-                //日付比較
-                NSComparisonResult result = [appDate compare:srvDate];
-                switch(result) {
-                    case NSOrderedSame:
-                        // 同じ日時
-                        NSLog(@"同じ日時");
-                    break;
-                    case NSOrderedAscending:
-                        // -1
-                        // appDateが前
-                        //ファイルの存在チェック
-                        if ([fileManager fileExistsAtPath:dataPath]) {
-                            //存在する場合、削除
-                            [fileManager removeItemAtPath:dataPath error:NULL];
-                    }
-                    
-                    [defaults setObject:srvUpdateTime forKey:KEY_RYOBO_PHOTO_UPDATETIME];
-                    [defaults synchronize];
-                    NSLog(@"NSOrderedAscending");
-                    break;
-                case NSOrderedDescending:
-                    // 1
-                    // appDateが後
-                    NSLog(@"NSOrderedDescending");
-                    break;
+-(void)getInfo{
+    //サーバーから会員情報取得
+    HttpAccess *httpAccess = [HttpAccess new];
+    
+    NSMutableDictionary *parameter = [@{@"appli_id":appliId} mutableCopy];
+    
+    NSData *returnData = [httpAccess POST:GET_MEMBER_ID param:parameter];
+    
+    NSError *errorObject = nil;
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:returnData options:NSJSONReadingAllowFragments error:&errorObject];
+    
+    //JSONオブジェクトのパース失敗時はログを出して終了
+    if ([jsonObject isEqual:@"false"]) {
+        NSLog(@"JSONObjectパース失敗");
+        return;
+    }
+    
+    //サーバーからタイムスタンプを取得
+    srvUpdateTime = [jsonObject objectForKey:@"timestamp"];
+    
+    //アプリにデータがなければ、現在時刻を保存
+    if (appUpDateTime == NULL|| [appUpDateTime length] == 0) {
+        [defaults setObject:nowTime forKey:KEY_RYOBO_PHOTO_UPDATETIME];
+        [defaults synchronize];
+    }else{
+        //アプリ内データ
+        NSDateFormatter *appDateFormatter = [[NSDateFormatter alloc] init];
+        appDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSDate *appDate = [appDateFormatter dateFromString:appUpDateTime];
+        
+        //サーバーデータ
+        NSDateFormatter *srvDateFormatter = [[NSDateFormatter alloc] init];
+        srvDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        NSDate *srvDate = [appDateFormatter dateFromString:srvUpdateTime];
+        
+        //保存先パス取得
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"ryobo2.jpg"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        //日付比較
+        NSComparisonResult result = [appDate compare:srvDate];
+        switch(result) {
+            case NSOrderedSame:
+                // 同じ日時
+                NSLog(@"同じ日時");
+                break;
+            case NSOrderedAscending:
+                // -1
+                // appDateが前
+                //ファイルの存在チェック
+                if ([fileManager fileExistsAtPath:dataPath]) {
+                    //存在する場合、削除
+                    [fileManager removeItemAtPath:dataPath error:NULL];
                 }
-            
-            }
-
-            //サーバーから故人アップデートカウント数を取得
-            NSMutableDictionary *parameter_update = [@{@"appli_id":appliId} mutableCopy];
-        
-            NSData *returnDataUpdata = [httpAccess POST:GET_DECEASED_UPDATE_COUNT param:parameter_update];
-        
-            NSString *deceasedUpdateCountString= [[NSString alloc] initWithData:returnDataUpdata encoding:NSUTF8StringEncoding];
-            //NSInteger型に変換
-            deceasedUpdateCount = [deceasedUpdateCountString intValue];
-        
-//            NSLog(@"update%ld",devicedeceasedUpdateCount);
-            
+                
+                [defaults setObject:srvUpdateTime forKey:KEY_RYOBO_PHOTO_UPDATETIME];
+                [defaults synchronize];
+                NSLog(@"NSOrderedAscending");
+                break;
+            case NSOrderedDescending:
+                // 1
+                // appDateが後
+                NSLog(@"NSOrderedDescending");
+                break;
         }
         
     }
     
+    //サーバーから故人アップデートカウント数を取得
+    NSMutableDictionary *parameter_update = [@{@"appli_id":appliId} mutableCopy];
+    
+    NSData *returnDataUpdata = [httpAccess POST:GET_DECEASED_UPDATE_COUNT param:parameter_update];
+    
+    NSString *deceasedUpdateCountString= [[NSString alloc] initWithData:returnDataUpdata encoding:NSUTF8StringEncoding];
+    //NSInteger型に変換
+    deceasedUpdateCount = [deceasedUpdateCountString intValue];
+    
+    //            NSLog(@"update%ld",devicedeceasedUpdateCount);
+    
+
+
 }
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -375,6 +388,7 @@
 }
 
 //アクション
+    
 
 //「ニチリョク」へ遷移
 - (IBAction)move_customer_info:(id)sender {

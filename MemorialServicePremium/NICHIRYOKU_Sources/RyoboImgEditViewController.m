@@ -155,9 +155,9 @@
         NSData *data = UIImageJPEGRepresentation(resizeImage, 0.8);
         
         //墓写真フラグが０の場合
-        if ([memberRyoboImg isEqualToString:@""]||[memberRyoboImg isEqualToString:@"0"] ) {
-             [self saveImage:data];
-        }
+//        if ([memberRyoboImg isEqualToString:@""]||[memberRyoboImg isEqualToString:@"0"] ) {
+//             [self saveImage:data];
+//        }
         
         //保存する（ファイルが存在する場合は上書きされる）
         if ([data writeToFile:dataPath atomically:YES]) {
@@ -169,7 +169,7 @@
             
         [self.view makeToast:@"保存が完了しました。" duration:TOAST_DURATION_NOTICE position:@"center"];
 
-        [NSTimer scheduledTimerWithTimeInterval:1.2f target:self selector:@selector(moveView) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(moveView) userInfo:nil repeats:NO];
 
             //アクセスキーを取得されている場合、ダウンロードを実行する
             //インジケーター開始
