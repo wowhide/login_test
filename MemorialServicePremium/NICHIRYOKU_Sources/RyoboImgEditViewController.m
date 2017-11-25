@@ -167,13 +167,13 @@
             [defaults setObject:@"1" forKey:KEY_RYOBO_PHOTO_PATh];
             [defaults synchronize];
             
-        [self.view makeToast:@"保存が完了しました。" duration:TOAST_DURATION_NOTICE position:@"center"];
-
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(moveView) userInfo:nil repeats:NO];
+//        [self.view makeToast:@"保存が完了しました。" duration:TOAST_DURATION_NOTICE position:@"center"];
+//
+//        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(moveView) userInfo:nil repeats:NO];
 
             //アクセスキーを取得されている場合、ダウンロードを実行する
             //インジケーター開始
-//            [IndicatorWindow openWindow];
+            [IndicatorWindow openWindow];
             
             //会員番号QRを読み込んでいる場合
             BOOL transfer_download = [defaults boolForKey:@"KEY_DOWNLOAD"];
@@ -198,9 +198,8 @@
             [self.view makeToast:@"保存に失敗しました。\nもう一度保存して下さい。" duration:TOAST_DURATION_ERROR position:@"center"];
             return;
         }
-        
+    
     }
-
 }
 
 - (void)uploadData
@@ -250,30 +249,50 @@
                 if (savePhotoResult && savephoto_response.statusCode == 200) {
                     photoUpResult = [[NSString alloc] initWithData:savePhotoResult encoding:NSUTF8StringEncoding];
                     
-                    
-                    
-                    
                     //ダイアログ表示
                     [self.view makeToast:@"保存が完了しました" duration:TOAST_DURATION_ERROR position:@"center"];
                     
                     
+                    //メインスレッドでインディケーターを閉じてメッセージを表示する
+                    [self performSelectorOnMainThread:@selector(uploadResult) withObject:nil waitUntilDone:NO];
+                    
+                    
                     if ([photoUpResult isEqualToString:@"NO"]) {
                         //メインスレッドでインディケーターを閉じてエラーメッセージを表示する
-//                                                [self performSelectorOnMainThread:@selector(closeIndicatorAndErrorMessage:) withObject:@"データのアップロードに失敗しました。\nお手数ですがもう一度最初から操作して下さい。" waitUntilDone:NO];
+                        [self performSelectorOnMainThread:@selector(closeIndicatorAndErrorMessage:) withObject:@"保存に失敗しました。\nお手数ですがもう一度最初から操作して下さい。" waitUntilDone:NO];
                         return;
                     }
                 } else {
                     //メインスレッドでインディケーターを閉じてエラーメッセージを表示する
-//                                        [self performSelectorOnMainThread:@selector(closeIndicatorAndErrorMessage:) withObject:@"データのアップロードに失敗しました。\nお手数ですがもう一度最初から操作して下さい。" waitUntilDone:NO];
+                    [self performSelectorOnMainThread:@selector(closeIndicatorAndErrorMessage:) withObject:@"保存に失敗しました。\nお手数ですがもう一度最初から操作して下さい。" waitUntilDone:NO];
                     return;
                 }
-            
-
+    
     //インジケーターを閉じる
-//    [IndicatorWindow closeWindow];
+    [IndicatorWindow closeWindow];
     
     
+}
+
+//保存成功の場合
+-(void)uploadResult{
     
+    //インジケーターを閉じる
+    [IndicatorWindow closeWindow];
+    
+    [self.view makeToast:@"保存が完了しました。" duration:TOAST_DURATION_NOTICE position:@"center"];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(moveView) userInfo:nil repeats:NO];
+    
+    
+}
+//保存失敗の場合
+- (void)closeIndicatorAndErrorMessage:(NSString *)errorMessage
+{
+    //インジケーターを閉じる
+    [IndicatorWindow closeWindow];
+    //エラートースト表示
+    [self.view makeToast:errorMessage duration:TOAST_DURATION_ERROR position:@"center"];
 }
 
 
