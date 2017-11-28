@@ -395,7 +395,7 @@
     
     if([_textField isFirstResponder])
     {
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, CGRectGetHeight(keyboardRect), 0.0);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, CGRectGetHeight(keyboardRect)+65, 0.0);
         self.readMemberIdScroll.contentInset = contentInsets;
         self.readMemberIdScroll.scrollIndicatorInsets = contentInsets;
         
